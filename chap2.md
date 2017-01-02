@@ -178,3 +178,146 @@ Every multi-tape TM has an equivalent single tape TM.
 
 
 ## Non-Deterministic Turing Machines
+
+\begin{definition}[Non-Deterministic Turing Machines]
+
+A non-deterministic TM (NTM) is the same as a deterministic TM except
+for the transition function which is of the form:
+\[
+\delta: Q \times \Gamma \longrightarrow \mathcal{P}(Q \times \Gamma \times \{L, R\}).
+\]
+
+\end{definition}
+
+
+
+\begin{theorem}[Equivalence to Deterministic Turing Machines]
+
+For every NTM there exists a deterministic TM that recognizes the same language.
+
+\end{theorem}
+
+
+\begin{proposition}
+
+\hfill
+
+Recursive languages are closed under
+(1) union
+(2) intersection,
+(3) concatenation
+(4) star
+(5) complementation.
+
+Recursively recursive languages are closed under
+(1) union
+(4) intersection
+(2) concatenation
+(3) star.
+
+\end{proposition}
+
+
+\begin{definition}
+
+An enumerator is a TM. We say that it enumerates a language $L$ if the
+result of its computation (possibly infinite) is of the form:
+\[
+w_0 \sqcup w_1 \sqcup \dots \sqcup w_n \sqcup w_{n + 1} \sqcup \dots
+\]
+where $L = \{ w_i \mid i \in \mathbb{N} \}$.
+
+\end{definition}
+
+We say that a language $L$ is _recursively enumerable_ if there is an
+enumerator that enumerates $L$.
+
+
+
+\begin{theorem}[Turing Recognizable is Recursively Enumerable]
+
+A language is Turing Recognizable if and only if it is recursively enumerable.
+
+\end{theorem}
+
+
+
+\begin{proposition}[Turing Decidable and Ordered Enumeration]
+
+A language $L$ is Turing decidable if and only if there exists an
+enumerator that enumerates the words of $L$ in an ordering.
+
+\end{proposition}
+
+
+
+## The Concept of Algorithm
+
+\begin{definition}[Coding]
+
+A coding is a rule for converting a piece of information into another
+object. Given any non-empty sets $E, F$, a coding is a one-to-one total
+function:
+\[
+c : E \xrightarrow{1-1} F.
+\]
+
+\end{definition}
+
+
+\begin{example}
+$E = \{0, 1\}$ and $F = \mathcal{N}$ and $c : E \xrightarrow{1-1} F$ is a coding
+from binary numbers to integers.
+\end{example}
+
+
+\begin{notation}
+Given any Turing machine $\mathcal{M}$, we write
+
+\begin{itemize}
+\item $\mathcal{M}(w) \downarrow$ to say that the machine $\mathcal{M}$ stops on input $w$
+
+\begin{itemize}
+\item $\mathcal{M}(w) \downarrow^{acc.}$ means that $\mathcal{M}$ stops in an accpeting configuration, and
+\item $\mathcal{M}(w) \downarrow^{rej.}$ means that $\mathcal{M}$ stops in an rejecting configuration
+\end{itemize}
+
+\item $\mathcal{M}(w) \uparrow$ to say that the machine $\mathcal{M}$ never stops on input $w$.
+
+
+\end{itemize}
+
+\end{notation}
+
+
+
+\begin{definition}[Turing Computable]
+
+Given any two non-empty finite sets $A, B$, a partial function $f : A^*
+\rightarrow B^*$ is Turing computable if and only if there exists a Turing
+machine $\mathcal{M}_f such that$:
+
+\begin{itemize}
+\item on input $w \notin dom(f): \mathcal{M}_f(w) \uparrow$
+\item on input $w \in dom(f): \mathcal{M}_f(w) \downarrow^{acc.}$ with the word ``$f(w)$" on its tape.
+\end{itemize}
+
+\end{definition}
+
+
+
+\begin{remarks}
+\hfill
+
+(1) Given any finite alphabet $\Sigma$, and any TM $\mathcal{M}$ whose
+alphabet is $\Sigma$, there exists a \textit{Turing computable} coding:
+$c : \Sigma^* \longrightarrow \{0, 1, \sqcup\}^*$ and a TM $\mathcal{M}_c$
+with tape alphabet $\{ 0, 1, \sqcup \}$ such that $\mathcal{M}$ accepts $w$
+if and only if $\mathcal{M}_c$ accepts $c(w)$.
+
+(2) Every regular language is decidable because a DFA is nothing but a
+deterministic TM that always goes right.
+
+(3) Every context-free language is decidable.
+
+\end{remarks}
