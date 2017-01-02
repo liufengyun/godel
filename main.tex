@@ -68,18 +68,18 @@
 {2pt}%⟨Space below⟩
 {}%⟨Body font⟩
 {}%⟨Indent amount⟩
-{}% ⟨Theorem head font⟩
+{\bfseries}% ⟨Theorem head font⟩
 {.}%⟨Punctuation after theorem head⟩
 {.5em}%⟨Space after theorem head⟩2
 {}%⟨Theorem head spec (can be left empty, meaning ‘normal’)⟩
 
-\theoremstyle{plain}
-\newtheorem{theorem}{\textsc{Theorem}}
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
 
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{\textsc{Definition}}
-\newtheorem{lemma}[theorem]{\textsc{Lemma}}
-\newtheorem{corollary}[theorem]{\textsc{Corollary}}
+% \theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
 
 % layout
 % \setlength\parindent{0pt}     % no indent

@@ -9,7 +9,7 @@ all: tex
 	# (command -v pdfsizeopt >/dev/null 2>&1 && { mv paper.pdf paper-big.pdf; pdfsizeopt paper-big.pdf paper.pdf; }) || true
 
 work:
-	ls content.md main.tex | entr make all # work with skim for auto refresh
+	ls *.md main.tex | entr make all # work with skim for auto refresh
 
 clean:
 	rubber -d --clean main
