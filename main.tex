@@ -5,8 +5,10 @@
 \usepackage{mathptmx} % Times font
 \usepackage{mathrsfs} % mathrsfs font
 \usepackage{amsthm}   % theorems, definitions, lemmas
-
+\usepackage{amsfonts}
 \usepackage{amsmath}  % \text{}
+\usepackage[mathcal]{euscript}
+
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{framed}       % frames
@@ -71,20 +73,27 @@
 {\bfseries}% ⟨Theorem head font⟩
 {.}%⟨Punctuation after theorem head⟩
 {.5em}%⟨Space after theorem head⟩2
-{}%⟨Theorem head spec (can be left empty, meaning ‘normal’)⟩
+{\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%⟨Theorem head spec (can be left empty, meaning ‘normal’)⟩
 
 \theoremstyle{theorem}
 \newtheorem{theorem}{Theorem}
 
-% \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
 
 % layout
 % \setlength\parindent{0pt}     % no indent
 % \setlength{\parskip}{8pt}     % par spacing
 \onehalfspacing               % line spacing
+
+% pandoc
+
+\providecommand{\tightlist}{% for pandoc compatibility
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
 
 %end the preamble and start the document
 \begin{document}
