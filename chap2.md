@@ -321,3 +321,327 @@ deterministic TM that always goes right.
 (3) Every context-free language is decidable.
 
 \end{remarks}
+
+
+## Universal Turing Machine
+
+Encoding of Turing machine:
+
+- $C : A \longrightarrow \{0, 1\}^{[8]}$
+- $c(a_0\dots a_p) = C(a_0)\dots C(a_p)$
+- Code of $\mathcal{M}$: $^\ulcorner \mathcal{M}^\urcorner = c(\mathcal{M})$.
+
+\begin{definition}[Universal Turing Machine]
+
+There exists a Turing machine $\mathcal{u}$ such that on each input of the form
+$vw \in \{0, 1\}^*$:
+
+\begin{center}
+
+if $v = ^\ulcorner\mathcal{M}^\urcorner$ for some Turing machine $\mathcal{M}$,
+then $\mathcal{u}$ works as $\mathcal{M}$ on input $w$.
+
+\end{center}
+
+\end{definition}
+
+
+## The Halting Problem
+
+\begin{proposition}
+
+The following language is Turing recognizable but not decidable:
+\[
+\{  ^\ulcorner \mathcal{M}^\urcorner w \in \{0, 1\}^* \mid \mathcal{M} \text{ is a TM accepts } w  \}
+\]
+
+\end{proposition}
+
+__Proof:__ Suppose there is a decider $\mathcal{D}$ decides the
+language. We construct a new TM $\mathcal{H}$ based on $\mathcal{D}$
+for the given input $w$:
+
+1. if $\mathcal{D}$ accepts $ww$, $\mathcal{H}$ doesn't terminate
+2. if $\mathcal{D}$ rejects $ww$, $\mathcal{H}$ accepts $w$
+
+Now the question is: does $\mathcal{H}$ accept $^\ulcorner \mathcal{H}^\urcorner$?
+If $\mathcal{H}$ accepts $^\ulcorner \mathcal{H}^\urcorner$, then
+$\mathcal{D}$ rejects $^\ulcorner \mathcal{H}^\urcorner$$^\ulcorner
+\mathcal{H}^\urcorner$, which in turn implies
+$\mathcal{H}$ doesn't accept $^\ulcorner \mathcal{H}^\urcorner$, a contradiction.
+
+On the other hand, If it doesn't accept, then according to the
+definition it doesn't terminate. If $\mathcal{H}$ doesn't terminate
+on $^\ulcorner \mathcal{H}^\urcorner$, then $\mathcal{D}$ accepts
+$^\ulcorner \mathcal{H}^\urcorner$$^\ulcorner
+\mathcal{H}^\urcorner$. According to the definition of the set, then
+it means $\mathcal{H}$ accepts $^\ulcorner \mathcal{H}^\urcorner$, a
+contradiction. \qed
+
+\begin{proposition}
+
+The following language is Turing recognizable but not decidable:
+\[
+\{ ^\ulcorner \mathcal{M} ^\urcorner \in \{0, 1\}^* \mid \mathcal{M}(\epsilon) \downarrow \}.
+\]
+
+
+\end{proposition}
+
+**Proof Idea**: Suppose there exists a decider for the language, then
+we can use it to create a general decider for any Turing machine on
+any input.
+
+Given a decider $\mathcal{D}$ for the language, and input $^\ulcorner
+\mathcal{M}^\urcorner w$, the general decider $\mathcal{G}$ works as
+follows:
+
+- It changes the TM description $^\ulcorner \mathcal{M}^\urcorner$ to
+$^\ulcorner \mathcal{M}^{\prime\urcorner}$, which when started will first write
+$w$ on the tape and return to the initial state.
+- Run the decider $\mathcal{D}$ on $^\ulcorner\mathcal{M}^{\prime\urcorner}$:
+    - if it accepts, then $\mathcal{G}$ accepts $^\ulcorner\mathcal{M}^\urcorner w$
+    - otherwise, it rejects.   \qed.
+
+
+\begin{corollary}
+
+The following languages are not recursively enumerable:
+
+\begin{itemize}
+\item $\{0, 1\}^* \backslash \{ ^\ulcorner \mathcal{M}^\urcorner w \in \{0, 1\}^* \mid \mathcal{M}(w) \downarrow^{acc.} \}$
+\item $\{0, 1\}^* \backslash \{ ^\ulcorner \mathcal{M}^\urcorner \in \{0, 1\}^* \mid \mathcal{M}(\epsilon) \downarrow \}$
+\item $ \{ ^\ulcorner \mathcal{M}^\urcorner w \in \{0, 1\}^* \mid \mathcal{M}(w) \downarrow^{rej.} \text{ or  } \mathcal{M}(w) \uparrow \}$
+\item $ \{ ^\ulcorner \mathcal{M}^\urcorner w \in \{0, 1\}^* \mid \mathcal{M}(\epsilon) \uparrow \}$
+\end{itemize}
+
+\end{corollary}
+
+
+
+## Turing Machine with Oracle
+
+\begin{definition}[Oracle]
+\hfill
+
+(1) An \textbf{oracle} is any subset $\mathbb{O} \subseteq \mathbb{N}$
+
+(2) An \textbf{oracle-compatible-Turing machine} (o-c-TM) is a 2-tape Turing
+machine similar to any 2-tape Turing machine except that it only
+reads but never writes on tape \textcircled{\small 2}:
+\[
+\mathcal{O} = (Q, \Sigma, \Gamma, \delta, q_0, q_{acc.}, q_{rej.})
+\]
+
+(3) An oracle-compatible-Turing machine $\mathcal{O}$ equipped with
+the oracle $\mathbb{O}$, on input word $w \in \Sigma^*$ (in short \textbf{an
+oracle TM} $\mathcal{O}^\mathbb{O}$ on word $w \in \Sigma^*$) is the TM
+whose initial configuration is:
+\[
+(q_0w, q_0\mathcal{X}_\mathbb{O})
+\]
+where $\mathcal{X}_\mathbb{O} \in \{0, 1\}^\omega$ is the infinite word
+\[
+\mathcal{X}_\mathbb{O}(0)\mathcal{X}_\mathbb{O}(1)\dots\mathcal{X}_\mathbb{O}(n)\dots
+\]
+defined by
+\[
+\mathcal{X}_\mathbb{O}(n) = \left\{
+  \begin{array}{rl}
+    1 & \text{if } n \in \mathbb{O}, \\
+    0 & \text{if } n \notin \mathbb{O}. \\
+  \end{array} \right.
+\]
+
+
+\end{definition}
+
+
+\begin{example}
+
+Let $\mathbb{O} \subseteq \mathbb{N}$ be the set of all the codes of
+Turing machines that halt on the mpty input:
+\[
+\mathbb{O} = \{ \overline{1\ulcorner\mathcal{M}\urcorner}^2 \in \mathbb{N} \mid \mathcal{M}(\epsilon) \downarrow \}
+\]
+
+Then we can construct an machine $\mathcal{O}^\mathbb{O}$ that decides the language by using the oracle:
+\[
+\{ \ulcorner\mathcal{M}\urcorner \in \{0, 1\}^* \mid \mathcal{M}(\epsilon) \downarrow \}
+\]
+
+\end{example}
+
+
+\begin{notation}
+\hfill
+
+\begin{enumerate}
+
+\item The mapping $f: \{0, 1\}^* \iff \mathbb{N}$ is a bijection
+\item Given any language $L \subseteq \{0, 1\}^*$, we write $\mathbb{O}_L \subseteq \mathbb{N}$ for the set:
+\[
+\mathbb{O}_L = \{ \ulcorner w \urcorner \in \mathbb{N} \mid w \in L \} = \{ k \in \mathbb{N} \mid \ulcorner k \urcorner \in L \}.
+\]
+\item Given any subset $\mathbb{O} \subseteq \mathbb{N}$, we write $\mathcal{L}_{(\mathbb{O})} \subseteq \{0, 1\}^*$ for the language:
+\[
+\mathcal{L}_{(\mathbb{O})} = \{ w \in \{0, 1\}^* \mid \ulcorner w \urcorner \in \mathbb{O} \} = \{ \ulcorner k \urcorner \in \{0, 1\}^* \mid k \in \mathbb{O} \}.
+\]
+
+\end{enumerate}
+
+In another word, $\mathbb{O}_L$ is the oracle associated with the
+language $L$, and $\mathcal{L}_{(\mathbb{O})}$ is the language associated
+with the oracle $\mathbb{O}$.
+\end{notation}
+
+
+\begin{proposition}
+
+Given any recursive language $L \subseteq \{0, 1\}^*$, and any oracle
+Turing machine $\mathcal{O}^{\mathbb{O}_L}$:
+
+\begin{itemize}
+
+\item $\mathcal{L}(\mathcal{O}^{\mathbb{O}_L})$ is recursively enumerable,
+\item if $\mathcal{O}^{\mathbb{O}_L}$ is an oracle decider, then
+$\mathcal{L}(\mathcal{O}^{\mathbb{O}_L})$ is recursive.
+
+\end{itemize}
+
+\end{proposition}
+
+
+
+\begin{definition}[Turing Reducibility]
+
+Given any $A, B \subseteq \mathbb{N}$, $A$ is \textit{Turing-reducible} to $B$,
+denoted $A \le_T B$ if there exists an o-c-TM $\mathcal{O}^B$ which on empty
+tape computes $\mathcal{X}_A$.
+
+\end{definition}
+
+
+\begin{proposition}
+\hfill
+
+Given any $A, B \subseteq \mathbb{N}$, the following are equivalent:
+
+(1) $A$ is Turing reducible to $B$
+
+(2) for every o-c-TM $\mathcal{M}$, there exists an o-c-TM $\mathcal{N}$ such
+that $\mathcal{L}(\mathcal{M}^A) = \mathcal{L}(\mathcal{N}^B)$. Moreover, in
+case $\mathcal{M}^A$ is an oracle decider, we may ensure that $\mathcal{N}^B$
+be one too.
+
+\end{proposition}
+
+
+
+\begin{notation}
+Given any $A, B \subseteq \mathbb{N}$, we write:
+
+\begin{enumerate}
+\item $A \le_T B$ if $A$ is Turing reducible to $B$.
+\item $A \equiv_T B$ if $A \le_T B$ and $B \le_T A$.
+\item $A <_T B$ if $A \le_T B$ and $B \nleq_T A$.
+\end{enumerate}
+
+\end{notation}
+
+
+\begin{example}
+Given any language $L \subseteq \{0, 1\}^*$:
+
+\begin{enumerate}
+\item $\mathbb{O}_L \equiv_T \mathbb{O}_{\overline{L}} = \mathbb{N} \backslash \mathbb{O}_L$.
+\item $\oslash \le_T \mathbb{O}_L$.
+\item $L$ is recursive $\iff$ $\mathbb{O}_L \equiv_T \oslash$.
+\item $L$ is not recursive $\iff$ $\oslash <_T \mathbb{O}_L$.
+\item $\mathbb{O}_L \equiv_T \mathbb{O}_{\mathcal{L}_({\mathbb{O}_L})}$ holds
+since we have $\mathbb{O}_L = \mathbb{O}_{\mathcal{L}_({\mathbb{O}_L})}$.
+\end{enumerate}
+
+\end{example}
+
+
+The following equivalence class is called a __Turing degree__:
+$$
+[A]_{\equiv_T} = \{ B \subseteq \mathbb{N} \mid B \equiv_T A \}
+$$
+The ordering on oracles induces an ordering $\mathbb{TD}$ on the set of all Turing degrees.
+
+
+\begin{example}[Facts of Turing Degrees]
+\hfill
+
+(1) Given any $d \in \mathbb{TD}$, $card(d) = \mathfrak{N}_0$.
+
+(2) Given any set $A \subseteq \mathbb{N}$ the set is countable: $\{ B \subseteq \mathbb{N} \mid B \le_T A \}$.
+
+(3) Given any $d \in \mathbb{TD}$, $card\{e \in \mathbb{TD} \mid e \le d \} \le \aleph_0$.
+
+(4) Given any $d \in \mathbb{TD}$, $card\{e \in \mathbb{TD} \mid d \le e \} \le 2^{\aleph_0}$.
+
+\end{example}
+
+
+\begin{proposition}
+\hfill
+
+(1) \{ $\mathcal{L}_{(\mathbb{O})} \subseteq \{0, 1\}^* \mid
+\mathbb{O} \le_T \oslash $ \} is the class \textit{Rec.} of all
+recursive languages.
+
+(2) $\{ L \subseteq \{0, 1\}^* \mid \mathbb{O}_L \le_T \mathbb{H}_{alt} \} \supsetneq \mathcal{R}.\mathcal{E}.$
+
+(3) $\{ \mathcal{L}_{(\mathbb{O})} \subseteq \{0, 1\}^* \mid \mathbb{O} \le_T \mathbb{H}_{alt} \} \supsetneq \mathcal{R}.\mathcal{E}.$
+
+Where $\mathbb{H}_{alt}$ stands for the set of codes of Turing machines that halt on the empty input:
+\[
+\mathbb{H}_{alt} = \mathbb{O}_{\{ \ulcorner \mathcal{M} \urcorner \in \{0, 1\}^* \mid \mathcal{M}(\epsilon) \downarrow \}}
+= \{ \ulcorner \mathcal{M} \urcorner \in \mathbb{N} \mid \mathcal{M}(\epsilon) \downarrow \}
+\]
+
+\end{proposition}
+
+
+
+\begin{definition}[Jump Operator]
+
+Given any subset $A \subset \mathbb{N}$, the \textit{jump} of $A$, denoted $A'$, is
+\[
+A' = \mathbb{O}_{\{\ulcorner \mathcal{M} \urcorner \in \{0, 1\}^* \mid \mathcal{M} \text{ an o-c-TM}, \mathcal{M}^A(\epsilon)\downarrow  \}}
+= \{ \ulcorner \mathcal{M} \urcorner \in \mathbb{N} \mid \mathcal{M}^A(\epsilon) \downarrow \}
+\]
+
+\end{definition}
+
+
+\begin{example}
+$\mathcal{H}_{alt} \equiv_T \oslash'$.
+\end{example}
+
+\begin{proposition}
+For every $A \subseteq \mathbb{N}$ the set
+\[
+A^\dag = \{ \alpha_2(\ulcorner \mathcal{M} \urcorner, \ulcorner w \urcorner) \in \mathbb{N} \mid M^A(w) \downarrow \}
+\]
+satisfies
+\[
+A' \equiv_T A^\dag.
+\]
+\end{proposition}
+
+
+\begin{proposition}
+For every $A \subseteq \mathbb{N}$, $A <_T A'$.
+\end{proposition}
+
+
+\begin{corollary}
+The following strict ordering between jumps is satisfied:
+\[
+\oslash <_T \oslash' <_T \oslash'' <_T \dots
+\]
+\end{corollary}
