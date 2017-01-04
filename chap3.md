@@ -250,3 +250,167 @@ h(x_1,\dots,x_p) = \prod_{t = 0}^{t = y} f(x_1,\dots,x_p,t).
 \]
 
 \end{proposition}
+
+
+## Bounded Minimisation and Bounded Quantification
+
+\begin{proposition}[Bounded minimisation]
+
+If $A \subseteq \mathbb{N}^{p+1}$ is primitive recursive, then $f :
+\mathbb{N}^{p + 1} \to \mathbb{N}$ defined below is also primitive
+recursive:
+\begin{equation*}
+f(\vec{x}, z) =
+\begin{cases}
+0 & \text{ if } \forall t \le z (\vec{x}, t) \in A \\
+\text{the least } t \le z \text{ such that } (\vec{x}, t) \in A & otherwise.
+\end{cases}
+\end{equation*}
+$f(\vec{x}, z)$ is denoted by $\mu t \le z (\vec{x}, t) \in A$.
+\end{proposition}
+
+
+\begin{proposition}[Closed under bounded quantification]
+
+The set of all primitive recursive predicates is closed under bounded
+quantification, i.e. if $A \subseteq \mathbb{N}^{p + 1}$ is primitive
+recursive, then the following two sets as well:
+
+\begin{enumerate}
+\item $\{ (\vec{x}, z) \mid \exists t \le z (\vec{x}, t) \in A \}$
+\item $\{ (\vec{x}, z) \mid \forall t \le z (\vec{x}, t) \in A \}$
+\end{enumerate}
+
+\end{proposition}
+
+
+\begin{example}
+\hfill
+\begin{enumerate}
+\item $\{ 2n \mid n \in \mathbb{N} \}$ is primitive recursive.
+\item $[\frac{x}{y}]$ is primitive recursive.
+\item $\{ (x, y) \mid y \text{ divides } x \}$ is primitive recursive.
+\item $\{ x \in \mathbb{N} \mid x \text{ is a prime number } \}$ is primitive recursive.
+\end{enumerate}
+
+\end{example}
+
+
+## Coding Sequences of Integers
+
+\begin{proposition}
+
+For every non-zero $p \in \mathbb{N}$ there exists primitive recursive functions
+$\beta_p^1, \beta_p^2, \dots, \beta_p^p : \mathbb{N} \to \mathbb{N}$ and
+$\alpha_p : \mathbb{N}^p \to \mathbb{N}$ such at:
+
+\begin{itemize}
+\item $\alpha_p : \mathbb{N}^p \longleftrightarrow \mathbb{N}$
+\item $\alpha_p^{-1} = (\beta_p^1(x), \dots, \beta_p^p(x))$
+\end{itemize}
+
+\end{proposition}
+
+
+\begin{example}
+A different way of coding sequences of integers:
+\begin{equation*}
+\begin{cases}
+c(\epsilon) & = \quad 1 \\
+c(x_0, \dots, x_p) & = \quad \prod(0)^{x_0 + 1} \cdot \prod(1)^{x_1 + 1} \dots \prod(p)^{x_p + 1}
+\end{cases}
+\end{equation*}
+\end{example}
+
+
+## Partial Recursive Functions
+
+\begin{definition}[composition]
+
+Given $f_1, \dots, f_n$ are partial functions on $\mathbb{N}^p \to
+\mathbb{N}$, the composition $h = g(f_1, \dots, f_n)$ is defined by:
+\begin{equation*}
+h(\vec{x}) =
+\begin{cases}
+undefined & \text{if } \vec{x} \notin \bigcap_{1 \le i \le n} dom_{f_i} \\
+undefined & \text{if } (f_1(\vec{x}), \dots, f_n(\vec{x})) \notin dom_g \\
+g(f_1(\vec{x}), \dots, f_n(\vec{x})) & otherwise
+\end{cases}
+\end{equation*}
+
+\end{definition}
+
+
+\begin{definition}[recursion]
+
+Given partial functions $g : \mathbb{N}^p \to \mathbb{N}$ and $h :
+\mathbb{N}^{p + 2} \to \mathbb{N}$, there exists a unique partial
+function $f : \mathbb{N}^{p + 1} \to \mathbb{N}$ such that for all
+$\vec{x} \in \mathbb{N}^p$ and $y \in \mathbb{N}$:
+\begin{equation*}
+f(\vec{x}, 0) =
+\begin{cases}
+undefined & \text{if } \vec{x} \notin dom_g \\
+g(\vec{x}) & otherwise
+\end{cases}
+\end{equation*}
+\begin{equation*}
+f(\vec{x}, y + 1) =
+\begin{cases}
+undefined & \text{if } (\vec{x}, y) \notin dom_g \\
+undefined & \text{if } (\vec{x}, y, f(\vec{x}, y)) \notin dom_h \\
+h(\vec{x}, y, f(\vec{x}, y)) & otherwise
+\end{cases}
+\end{equation*}
+
+\end{definition}
+
+
+\begin{definition}[minimization]
+
+Given partial function $f : \mathbb{N}^{p + 1} \to \mathbb{N}$, we define
+the partial function $g : \mathbb{N}^p \to \mathbb{N}$ as follows:
+\[
+g(\vec{x}) \quad = \quad \mu y f(\vec{x}, y) = 0.
+\]
+
+\end{definition}
+
+
+\begin{definition}[partial recursive functions]
+
+The set of partial recursive functions is the least that contains:
+
+\begin{enumerate}
+\item All constant functions $\mathbb{N}^p \to \mathbb{N}$
+\item All projections $\pi_i^p$
+\item The successor function $S(n) = n + 1$
+\end{enumerate}
+
+And is closed under:
+
+\begin{enumerate}
+\item composition
+\item recursion
+\item minimisation
+\end{enumerate}
+
+\end{definition}
+
+
+\begin{lemma}
+Every partial recursive function is Turing computable.
+\end{lemma}
+
+
+\begin{lemma}
+Every Turing computable partial function is partial recursive.
+\end{lemma}
+
+\begin{corollary}
+Every partial recursive function admits a construction that requires at most one minimisation.
+\end{corollary}
+
+\begin{theorem}
+A function is partial recursive if and only if it is Turing computable.
+\end{theorem}
