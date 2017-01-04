@@ -1,6 +1,7 @@
 tex:
 	pandoc chap1.md --listings -o chap1.tex
 	pandoc chap2.md --listings -o chap2.tex
+	pandoc chap3.md --listings -o chap3.tex
 
 all: tex
 	pdflatex main < /dev/null

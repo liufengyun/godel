@@ -361,7 +361,7 @@ __Proof:__ Suppose there is a decider $\mathcal{D}$ decides the
 language. We construct a new TM $\mathcal{H}$ based on $\mathcal{D}$
 for the given input $w$:
 
-1. if $\mathcal{D}$ accepts $ww$, $\mathcal{H}$ doesn't terminate
+1. if $\mathcal{D}$ accepts $ww$, $\mathcal{H}$ rejects $w$
 2. if $\mathcal{D}$ rejects $ww$, $\mathcal{H}$ accepts $w$
 
 Now the question is: does $\mathcal{H}$ accept $^\ulcorner \mathcal{H}^\urcorner$?
@@ -370,13 +370,11 @@ $\mathcal{D}$ rejects $^\ulcorner \mathcal{H}^\urcorner$$^\ulcorner
 \mathcal{H}^\urcorner$, which in turn implies
 $\mathcal{H}$ doesn't accept $^\ulcorner \mathcal{H}^\urcorner$, a contradiction.
 
-On the other hand, If it doesn't accept, then according to the
-definition it doesn't terminate. If $\mathcal{H}$ doesn't terminate
-on $^\ulcorner \mathcal{H}^\urcorner$, then $\mathcal{D}$ accepts
-$^\ulcorner \mathcal{H}^\urcorner$$^\ulcorner
-\mathcal{H}^\urcorner$. According to the definition of the set, then
-it means $\mathcal{H}$ accepts $^\ulcorner \mathcal{H}^\urcorner$, a
-contradiction. \qed
+On the other hand, if $\mathcal{H}$ rejects $^\ulcorner
+ \mathcal{H}^\urcorner$, then $\mathcal{D}$ accepts $^\ulcorner
+ \mathcal{H}^\urcorner$$^\ulcorner \mathcal{H}^\urcorner$. According
+ to the definition of the set, then it means $\mathcal{H}$ accepts
+ $^\ulcorner \mathcal{H}^\urcorner$, a contradiction. \qed
 
 \begin{proposition}
 
@@ -417,7 +415,25 @@ The following languages are not recursively enumerable:
 
 \end{corollary}
 
+A list of _decidable_ languages:
 
+- $A_{DFA} = \{ \langle B, w \rangle \mid B \text{ is a DFA accepts } w  \}$
+- $A_{NFA} = \{ \langle B, w \rangle \mid B \text{ is a NFA accepts } w  \}$
+- $A_{REX} = \{ \langle R, w \rangle \mid R \text{ is a regular expression generates } w  \}$
+- $E_{DFA} = \{ \langle A \rangle \mid A \text{ is a DFA and } \mathcal{L}(A) = \oslash  \}$
+- $EQ_{DFA} = \{ \langle A, B \rangle \mid A, B \text{ are DFAs and } \mathcal{L}(A) = \mathcal{L}(B)  \}$
+- $A_{CFG} = \{ \langle G, w \rangle \mid G \text{ is a CFG generates } w  \}$
+- $E_{CFG} = \{ \langle G \rangle \mid G \text{ is a CFG and } \mathcal{L}(G) = \oslash  \}$
+- Every context-free language is decidable
+
+A list of _undecidable_ languages:
+
+- $A_{TM} = \{ \langle M, w \rangle \mid M \text{ is a TM and } M \text{ accepts } w  \}$
+- $E_{TM} = \{ \langle M \rangle \mid M \text{ is a TM and } \mathcal{L}(M) = \oslash  \}$
+- $EQ_{TM} = \{ \langle M_1, M_2 \rangle \mid M_1, M_2 \text{ are TMs and } \mathcal{L}(M_1) = \mathcal{L}(M_2)  \}$
+- $REGULAR_{TM} = \{ \langle M \rangle \mid M \text{ is a TM and } \mathcal{L}(M) \text{ is  a regular language }  \}$
+
+__Rice's theorem__:  Determining any property of the languages recognized by Turing machines is undecidable.
 
 ## Turing Machine with Oracle
 
