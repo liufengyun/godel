@@ -371,11 +371,19 @@ h(\vec{x}, y, f(\vec{x}, y)) & otherwise
 Given partial function $f : \mathbb{N}^{p + 1} \to \mathbb{N}$, we define
 the partial function $g : \mathbb{N}^p \to \mathbb{N}$ as follows:
 \[
-g(\vec{x}) \quad = \quad \mu y f(\vec{x}, y) = 0.
+g(\vec{x}) \quad = \quad \mu y \; f(\vec{x}, y) = 0.
 \]
 
-\end{definition}
+Note that $g(\vec{x}) = y$ implies that:
+\begin{enumerate}
+\item $\forall z < y, f(\vec{x}, z)$ is defined!
+\item $\forall z < y, f(\vec{x}, z) > 0$,
+\item $f(\vec{x}, y) = 0$.
+\end{enumerate}
 
+If no such $y$ exists, then $g(\vec{x}) = 0$.
+
+\end{definition}
 
 \begin{definition}[partial recursive functions]
 
@@ -414,3 +422,8 @@ Every partial recursive function admits a construction that requires at most one
 \begin{theorem}
 A function is partial recursive if and only if it is Turing computable.
 \end{theorem}
+
+Note that we define _recursive_ as _partial recursive_. Ackermann
+function is not _primitive recursive_, but _partial recursive_ or
+_recursive_. _Partial recursive_ is also called $\mu$-recursive, to
+differentiate from $\lambda$-recursive.
