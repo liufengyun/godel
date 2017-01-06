@@ -426,3 +426,47 @@ Cut Rule
 
 \end{framed}
 \end{figure}
+
+We use sequent calculus as the proof system. Then all proofs of the
+system can be encoded (including invalid proofs):
+\begin{equation*}
+\begin{array}{lcl}
+  p = \overline{\phi \vdash \phi} & \rightsquigarrow & \ulcorner p \urcorner = a_4(\ulcorner \phi \vdash \phi \urcorner, 0, 0, 0) \\
+  p = \frac{p_1}{p_2} & \rightsquigarrow & \ulcorner p \urcorner = a_4(\ulcorner p_2 \urcorner, \ulcorner p_1 \urcorner, 0, 1) \\
+  p = \frac{p_1, p_2}{p_3} & \rightsquigarrow & \ulcorner p \urcorner = a_4(\ulcorner p_3 \urcorner, \ulcorner p_2 \urcorner, \ulcorner p_1 \urcorner, 2) \\
+\end{array}
+\end{equation*}
+
+Each inference rule has some constraints on what constituites a valid
+proof. Those valid one-step proofs can be classified into three categories
+depending on the shape of the proof step:
+
+- $R^0$: the axiom
+- $R^1$: one sequent above, one sequent down
+- $R^2$: two sequents above, one sequent down
+
+
+\begin{definition}
+
+The set $\mathcal{P}_{roofs}$ of the codes of all possible (valid)
+proofs can be defined by:
+\begin{equation*}
+\begin{array}{c}
+k = \alpha_4(n_1, n_2, n_3, n_4) \in \mathcal{P}_{roofs} \\
+\Longleftrightarrow \\
+\begin{array}{lcccccl}
+  n_4 = 0 & and & n_3 = 0 & and & n_2 = 0 & and & n_1 \in R^0 \\
+  & & & \bigvee & & & \\
+  n_4 = 1 & and & n_3 = 0 & and & n_2 \in P_{roofs} & and & (\beta_4^1(n_2), n_1) \in R^1 \\
+  & & & \bigvee & & & \\
+  n_4 = 2 & and & n_3 \in P_{roofs}  & and & n_2 \in P_{roofs} & and & (\beta_4^1(n_3), \beta_4^1(n_2), n_1) \in R^2 \\
+\end{array}
+\end{array}
+\end{equation*}
+
+\end{definition}
+
+
+\begin{lemma}
+The set $P_{roofs}$ is primitive recursive.
+\end{lemma}
