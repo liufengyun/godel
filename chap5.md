@@ -467,6 +467,69 @@ k = \alpha_4(n_1, n_2, n_3, n_4) \in \mathcal{P}_{roofs} \\
 \end{definition}
 
 
+\begin{notation}
+Given any proof $P$ we write $\ulcorner P \urcorner \mid$ for the integer that codes the proof.
+\end{notation}
+
 \begin{lemma}
 The set $P_{roofs}$ is primitive recursive.
 \end{lemma}
+
+
+## Undecidability of Robinson Arithmetic
+
+\begin{definition}
+\hfill
+
+(1) A theory $T$ is recursive if the following set is recursive: $ \{ \ulcorner \phi \urcorner \mid \phi \in T \} $.\\
+(2) A theory $T$ is decidable if the following set is recursive: $ thms(T) = \{ \ulcorner \phi \urcorner \mid T \vdash_c \phi \} $.
+
+\end{definition}
+
+
+\begin{theorem}
+Given any theory T, then the set:
+\[
+\{ (\ulcorner P \urcorner, \ulcorner \phi \urcorner) \mid P \text{ is a proof of } T \vdash_c \phi \}
+\]
+is
+\begin{enumerate}
+\item primitive recursive if $T$ is primitive recursive,
+\item recursive if $T$ is recursive.
+\end{enumerate}
+
+\end{theorem}
+
+
+\begin{proposition}
+Given any theory $T$,
+\[
+\{ \ulcorner \psi \urcorner \mid \psi \in T \} \text{ is recursive } \Longrightarrow \{ \ulcorner \phi \urcorner \mid T \vdash_c \phi \} \text{ is recursively enumerable }.
+\]
+\end{proposition}
+
+\begin{corollary}
+Let $T$ be any recursive theory:
+\begin{center}
+If $T$ is complete, then $T$ is decidable.
+\end{center}
+\end{corollary}
+
+
+\begin{theorem}
+Let $T \supseteq Rob.$ be any theory,
+\begin{center}
+$T$ is consistent $\Longleftrightarrow$ $T$ is undecidable.
+\end{center}
+\end{theorem}
+
+
+
+\begin{theorem}[undecidability of first-order logic]
+The set $ \{  \ulcorner \phi \urcorner \vdash_c \phi \} $ is not recursive.
+\end{theorem}
+
+
+\begin{theorem}[\godel's first incompleteness theorem]
+Let $T \supseteq Rob.$ be any theory both consistent and recursive, then $T$ is incomplete.
+\end{theorem}
