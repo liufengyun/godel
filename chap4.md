@@ -233,6 +233,7 @@ i = 0 \to \phi_g(y, \vec{x}) \\
 \right)
 \end{equation*}
 
+It's obvious the proof has to do induction on the depth of recursion $y + 1$. \qed.
 
 \begin{theorem}
 All total recursive functions are representable.
