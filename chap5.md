@@ -284,3 +284,145 @@ AX = \{ \alpha_2(2^{\ulcorner \phi \urcorner}, 2^{\ulcorner \phi \urcorner}) \mi
 \begin{lemma}
 The set $AX$ of codes of axioms of sequent calculus is primitive recursive.
 \end{lemma}
+
+
+## Coding the Proofs
+
+
+\begin{figure}
+\center \textbf{Sequent Calculus}
+\begin{framed}
+Axioms \\
+
+\infax[ax]
+{ \phi \vdash \phi }
+
+\hrulefill
+
+Logical Rules \\
+
+\begin{multicols}{3}
+
+\infrule[$\land_{l1}$]
+{  \Gamma, \phi \vdash \Delta }
+{  \Gamma, \phi \land \psi \vdash \Delta }
+
+\infrule[$\land_{l2}$]
+{  \Gamma, \psi \vdash \Delta }
+{  \Gamma, \phi \land \psi \vdash \Delta }
+
+\infrule[$\land_r$]
+{  \Gamma \vdash \phi, \Delta \andalso \Gamma \vdash \psi, \Delta }
+{  \Gamma \vdash  \phi \land \psi, \Delta }
+
+\end{multicols}
+
+\begin{multicols}{3}
+
+\infrule[$\lor_l$]
+{  \Gamma, \phi \vdash \Delta \andalso \Gamma, \psi \vdash \Delta }
+{  \Gamma, \phi \lor \psi \vdash  \Delta }
+
+\infrule[$\lor_{r1}$]
+{  \Gamma \vdash \phi, \Delta }
+{  \Gamma \vdash \phi \lor \psi, \Delta }
+
+\infrule[$\lor_{r2}$]
+{  \Gamma \vdash \psi, \Delta }
+{  \Gamma \vdash \phi \lor \psi, \Delta }
+
+\end{multicols}
+
+\begin{multicols}{2}
+
+\infrule[$\to_l$]
+{ \Gamma \vdash \phi, \Delta \andalso \Gamma, \psi \vdash \Delta }
+{ \Gamma, \phi \to \psi \vdash \Delta }
+
+\infrule[$\to_r$]
+{ \Gamma, \phi \vdash \psi, \Delta }
+{ \Gamma \vdash \phi \to \psi, \Delta }
+
+\end{multicols}
+
+\begin{multicols}{2}
+\infrule[$\neg_l$]
+{ \Gamma \vdash \phi, \Delta }
+{ \Gamma \neg \phi \vdash \Delta }
+
+\infrule[$\neg_r$]
+{ \Gamma, \phi \vdash \Delta }
+{ \Gamma \vdash \neg \phi, \Delta }
+
+\end{multicols}
+
+\begin{multicols}{2}
+
+\infrule[$\forall_l$]
+{ \Gamma, \phi_{[t/x]} \vdash \Delta }
+{ \Gamma, \forall x \phi \vdash \Delta }
+
+\infrule[$\forall_r$]
+{ \Gamma \vdash \phi_{[y/x]}, \Delta }
+{ \Gamma \vdash \forall x \phi, \Delta }
+
+\end{multicols}
+
+\begin{multicols}{2}
+
+\infrule[$\exists_r$]
+{ \Gamma, \phi_{[y/x]} \vdash \Delta }
+{ \Gamma, \exists x \phi \vdash \Delta }
+
+\infrule[$\exists_r$]
+{ \Gamma \vdash \phi_{[t/x]}, \Delta }
+{ \Gamma \vdash \exists x \phi, \Delta }
+
+\end{multicols}
+
+\begin{multicols}{2}
+
+\infrule[Ref]
+{ \Gamma, t = t \vdash \Delta }
+{ \Gamma \vdash \Delta }
+
+\infrule[Rep]
+{ \Gamma, t = s, \phi_{[s/x]}, \phi_{[t/x]} \vdash \Delta }
+{ \Gamma, s = t, \phi_{[t/x]} \vdash \Delta }
+
+\end{multicols}
+
+\hrulefill
+
+Structural Rules
+
+\begin{multicols}{4}
+
+\infrule[$wkn_l$]
+{ \Gamma \vdash \Delta }
+{ \Gamma, \phi \vdash \Delta }
+
+\infrule[$wkn_r$]
+{ \Gamma \vdash \Delta }
+{ \Gamma \vdash \phi, \Delta }
+
+\infrule[$ctr_l$]
+{ \Gamma, \phi, \phi \vdash \Delta }
+{ \Gamma, \phi \vdash \Delta }
+
+\infrule[$ctr_r$]
+{ \Gamma \vdash \phi, \phi, \Delta }
+{ \Gamma \vdash \phi, \Delta }
+
+\end{multicols}
+
+\hrulefill
+
+Cut Rule
+
+\infrule[cut]
+{ \Gamma \vdash \phi, \Delta \andalso \Gamma', \phi \vdash \Delta' }
+{ \Gamma, \Gamma' \vdash \Delta, \Delta' }
+
+\end{framed}
+\end{figure}
