@@ -537,7 +537,7 @@ $T$ is consistent $\Longleftrightarrow$ $T$ is undecidable.
 
 *Proof idea*: The idea is similar to the proof of undecidability of
 the halting problem. Suppose $T$ is decidable, then the following set
-$\mathcal{D}$ is decidable as well:
+$\mathcal{C}$ is decidable as well:
 $$
 \mathcal{C} = \{ \ulcorner H \urcorner \mid T \vdash_c \neg H(\ulcorner H \urcorner) \}
 $$
