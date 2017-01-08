@@ -543,9 +543,12 @@ $$
 $$
 
 Note that in the above $H$ contains one free variable. As $\mathcal{C}$ is
-decidable, there exists one formula $\phi(x_0)$ represents it such that:
+decidable, there exists one formula $\phi(x_0)$ in Robinson arithemtic
+represents it, i.e.:
 $$
-k \in \mathcal{C} \quad \Longleftrightarrow \quad T \vdash_c \phi(k)
+k \in \mathcal{C} \quad \Longleftrightarrow \quad
+Rob. \vdash_c \phi(k) \quad  \Longleftrightarrow \quad
+T \vdash_c \phi(k)
 $$
 
 Then we have:
