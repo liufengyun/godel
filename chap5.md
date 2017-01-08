@@ -545,20 +545,25 @@ $$
 Note that in the above $H$ contains one free variable. As $\mathcal{C}$ is
 decidable, there exists one formula $\phi(x_0)$ in Robinson arithemtic
 represents it, i.e.:
-$$
-k \in \mathcal{C} \quad \Longleftrightarrow \quad
-Rob. \vdash_c \phi(k) \quad  \Longleftrightarrow \quad
-T \vdash_c \phi(k)
-$$
+\begin{enumerate}
+\item $k \in \mathcal{C} \quad \Longrightarrow \quad Rob. \vdash_c \phi(k) \quad  \Longrightarrow \quad T \vdash_c \phi(k)$
+\item $k \notin \mathcal{C} \quad \Longrightarrow \quad Rob. \vdash_c \neg \phi(k) \quad  \Longrightarrow \quad T \vdash_c \neg \phi(k)$
+\end{enumerate}
 
 Then we have:
-$$
-T \vdash_c \phi(\ulcorner \phi \urcorner) \quad  \Longleftrightarrow \quad
-\ulcorner \phi \urcorner \in \mathcal{C} \quad \Longleftrightarrow \quad
-T \vdash_c \neg \phi(\ulcorner \phi \urcorner)
-$$
+\begin{enumerate}
+\item $\ulcorner \phi \urcorner \in \mathcal{C} \quad \Longrightarrow \quad
+      T \vdash_c \phi(\ulcorner \phi \urcorner) \quad  \Longrightarrow \quad
+      T \not \vdash_c \neg \phi(\ulcorner \phi \urcorner) \quad  \Longrightarrow \quad
+      \ulcorner \phi \urcorner \notin \mathcal{C}$
+\item $\ulcorner \phi \urcorner \notin \mathcal{C} \quad \Longrightarrow \quad
+      T \vdash_c \neg \phi(\ulcorner \phi \urcorner) \quad  \Longrightarrow \quad
+      \ulcorner \phi \urcorner \in \mathcal{C}$
+\end{enumerate}
 
-But we know $T$ is consistent, thus a contradition. \qed.
+In the above, $T \vdash_c \phi(\ulcorner \phi \urcorner) \quad \Longrightarrow \quad
+T \not \vdash_c \neg \phi(\ulcorner \phi \urcorner)$ becuase $T$ is
+consistent. \qed.
 
 \begin{theorem}[Undecidability of first-order logic]
 The set $ \{  \ulcorner \phi \urcorner \vdash_c \phi \} $ is not recursive.
