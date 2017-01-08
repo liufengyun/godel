@@ -500,6 +500,8 @@ is
 
 \end{theorem}
 
+*Intuition:* proof checking is decidable. The formal proof is to write
+ the characteristic function of the set, then the result is obvious.
 
 \begin{proposition}
 Given any theory $T$,
@@ -508,6 +510,11 @@ Given any theory $T$,
 \]
 \end{proposition}
 
+*Intuition:* The characteristic function of the set of theorems is as follows:
+$$
+\chi_B{n} = 1 \ominus (1 \ominus (\mu k \chi_A(k, n) = 1))
+$$
+
 \begin{corollary}
 Let $T$ be any recursive theory:
 \begin{center}
@@ -515,6 +522,11 @@ If $T$ is complete, then $T$ is decidable.
 \end{center}
 \end{corollary}
 
+*Intuition*: The set $thms(T)$ and $\overline{thms(T)}$ are both
+recursively enumerable.
+$$
+\overline{thms(T)} = (\mathbb{N} \backslash \mathbb{F}) \cup \{ \ulcorner \phi \urcorner \mid T \vdash_c \neg \phi \}
+$$
 
 \begin{theorem}
 Let $T \supseteq Rob.$ be any theory,
@@ -523,12 +535,36 @@ $T$ is consistent $\Longleftrightarrow$ $T$ is undecidable.
 \end{center}
 \end{theorem}
 
+*Proof idea*: The idea is similar to the proof of undecidability of
+the halting problem. Suppose $T$ is decidable, then the following set
+$\mathcal{D}$ is decidable as well:
+$$
+\mathcal{C} = \{ \ulcorner H \urcorner \mid T \vdash_c \neg H(\ulcorner H \urcorner) \}
+$$
 
+Note that in the above $H$ contains one free variable. As $\mathcal{C}$ is
+decidable, there exists one formula $\phi(x_0)$ represents it such that:
+$$
+k \in \mathcal{C} \quad \Longleftrightarrow \quad T \vdash_c \phi(k)
+$$
 
-\begin{theorem}[undecidability of first-order logic]
+Then we have:
+$$
+T \vdash_c \phi(\ulcorner \phi \urcorner) \quad  \Longleftrightarrow \quad
+\ulcorner \phi \urcorner \in \mathcal{C} \quad \Longleftrightarrow \quad
+T \vdash_c \neg \phi(\ulcorner \phi \urcorner)
+$$
+
+But we know $T$ is consistent, thus a contradition. \qed.
+
+\begin{theorem}[Undecidability of first-order logic]
 The set $ \{  \ulcorner \phi \urcorner \vdash_c \phi \} $ is not recursive.
 \end{theorem}
 
+*Intuition:*  If first-order logic is decidable, Robinson arithmetic will be decidable as well:
+$$
+AX_{Rob.} \vdash_c \phi   \quad  \Longleftrightarrow \quad \vdash_c AX_{Rob.} \to \phi.
+$$
 
 \begin{theorem}[\godel's first incompleteness theorem]
 Let $T \supseteq Rob.$ be any theory both consistent and recursive, then $T$ is incomplete.
