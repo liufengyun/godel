@@ -550,20 +550,17 @@ represents it, i.e.:
 \item $k \notin \mathcal{C} \quad \Longrightarrow \quad Rob. \vdash_c \neg \phi(k) \quad  \Longrightarrow \quad T \vdash_c \neg \phi(k)$
 \end{enumerate}
 
-Then we have:
-\begin{enumerate}
-\item $\ulcorner \phi \urcorner \in \mathcal{C} \quad \Longrightarrow \quad
-      T \vdash_c \phi(\ulcorner \phi \urcorner) \quad  \Longrightarrow \quad
-      T \not \vdash_c \neg \phi(\ulcorner \phi \urcorner) \quad  \Longrightarrow \quad
-      \ulcorner \phi \urcorner \notin \mathcal{C}$
-\item $\ulcorner \phi \urcorner \notin \mathcal{C} \quad \Longrightarrow \quad
-      T \vdash_c \neg \phi(\ulcorner \phi \urcorner) \quad  \Longrightarrow \quad
-      \ulcorner \phi \urcorner \in \mathcal{C}$
-\end{enumerate}
+Because $Rob.$ and $T$ are consistent, for the particular $\phi$ we have:
+$$k \in \mathcal{C} \quad \Longleftrightarrow \quad Rob. \vdash_c \phi(k) \quad  \Longleftrightarrow \quad T \vdash_c \phi(k)$$
 
-In the above, $T \vdash_c \phi(\ulcorner \phi \urcorner) \quad \Longrightarrow \quad
-T \not \vdash_c \neg \phi(\ulcorner \phi \urcorner)$ becuase $T$ is
-consistent. \qed.
+Then we have:
+$$
+T \vdash_c \phi(\ulcorner \phi \urcorner) \quad  \Longleftrightarrow \quad
+\ulcorner \phi \urcorner \in \mathcal{C} \quad \Longleftrightarrow \quad
+T \vdash_c \neg \phi(\ulcorner \phi \urcorner)
+$$
+
+However, we know $T$ is consistent, a contradition. \qed.
 
 \begin{theorem}[Undecidability of first-order logic]
 The set $ \{  \ulcorner \phi \urcorner \vdash_c \phi \} $ is not recursive.
