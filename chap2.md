@@ -61,9 +61,8 @@ configurations $C_0, \dots, C_k$ such that:
 
 \end{definition}
 
-\begin{definition}{Language Recognized by a TM}
+\begin{definition}[Language Recognized by a TM]
 The set of all words accepted by a TM $\mathcal{M}$ is the language it recognizes:
-
 \[
 \mathcal{L(M)} = \{ w \in \Sigma^* \mid \mathcal{M} \text{ accepts } w \}.
 \]
@@ -83,7 +82,6 @@ A Turing machine that recognizes $\{ w\bar{w} \mid w \in \{0, 1\}^*
 
 A language $L$ is Turing recognizable if there exists a TM
 $\mathcal{M}$ such that
-
 \[
 L = \mathcal{L(M)}
 \]
@@ -103,7 +101,7 @@ Turing machines with bi-infinite tapes are equivalent to Turing machines.
 
 \begin{proposition}[Equivalence to 2-stack Pushdown Automata]
 
-2-stack Pushdown automata are equivalent to Turing machines.
+2-stack pushdown automata are equivalent to Turing machines.
 
 \end{proposition}
 
@@ -197,6 +195,8 @@ For every NTM there exists a deterministic TM that recognizes the same language.
 
 \end{theorem}
 
+*Proof idea:* bread-first search of the NTM transition tree.
+
 
 \begin{proposition}
 
@@ -209,7 +209,7 @@ Recursive languages are closed under
 (4) star
 (5) complementation.
 
-Recursively recursive languages are closed under
+Recursively enumerable languages are closed under
 (1) union
 (4) intersection
 (2) concatenation
@@ -295,7 +295,7 @@ Given any Turing machine $\mathcal{M}$, we write
 
 Given any two non-empty finite sets $A, B$, a partial function $f : A^*
 \rightarrow B^*$ is Turing computable if and only if there exists a Turing
-machine $\mathcal{M}_f such that$:
+machine $\mathcal{M}_f$ such that:
 
 \begin{itemize}
 \item on input $w \notin dom(f): \mathcal{M}_f(w) \uparrow$
@@ -591,7 +591,7 @@ The ordering on oracles induces an ordering $\mathbb{TD}$ on the set of all Turi
 \begin{example}[Facts of Turing Degrees]
 \hfill
 
-(1) Given any $d \in \mathbb{TD}$, $card(d) = \mathfrak{N}_0$.
+(1) Given any $d \in \mathbb{TD}$, $card(d) = \aleph_0$.
 
 (2) Given any set $A \subseteq \mathbb{N}$ the set is countable: $\{ B \subseteq \mathbb{N} \mid B \le_T A \}$.
 

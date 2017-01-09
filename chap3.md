@@ -135,12 +135,10 @@ there exsits a TM $\mathcal{M}$ such that on input $\vec{x} = (x_1, \dots, x_p)$
 
 
 \begin{proposition}
-
 Given any partial function $f : \mathbb{N}^p \to \mathbb{N}$,
 \[
-f \text{ is Turing computable } \iff G_f = \{ (\vec{x}, f(x)) \mid \vec{x} \in dom_f \} \text{ is Turing Recognizable }.
+f \text{ is Turing computable } \iff G_f = \{ (\vec{x}, f(\vec{x})) \mid \vec{x} \in dom_f \} \text{ is Turing Recognizable }.
 \]
-
 \end{proposition}
 
 
@@ -410,10 +408,22 @@ And is closed under:
 Every partial recursive function is Turing computable.
 \end{lemma}
 
+*Proof idea:* Induction on the definition of partial recursive functions.
 
 \begin{lemma}
 Every Turing computable partial function is partial recursive.
 \end{lemma}
+
+*Proof idea:* Define a recursive function $f : \mathbb{N}^2 \to
+ \mathbb{N}$ that maps the encoding of initial configuration to the
+ encoding of configuration after $n$ steps. This function is primitive
+ recursive.
+
+Then the partial recursive function computed by the TM is the minimisation
+of computation steps leading to an accepting state:
+$$
+f(w) = \beta_4^4(f(\alpha_4(0, 0, w, 0), \mu n.accept(n)))
+$$
 
 \begin{corollary}
 Every partial recursive function admits a construction that requires at most one minimisation.

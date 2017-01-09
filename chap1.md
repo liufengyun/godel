@@ -101,7 +101,7 @@ and there is a sequence of states $r_0, \dots, r_{n + 1}$ such that
 
 \begin{proposition}[Equivalence of NFA and DFA]
 
-Every NFA has an equivalent DFA, i.e. given any NFA $mathcal{N}$ there
+Every NFA has an equivalent DFA, i.e. given any NFA $\mathcal{N}$ there
 exists some DFA $\mathcal{D}$ such that
 
 \[
@@ -109,6 +109,10 @@ exists some DFA $\mathcal{D}$ such that
 \]
 
 \end{proposition}
+
+*Proof idea:* Let $Q' = \mathcal{P}(Q)$, $F' = \{ S \subseteq Q \mid S \cap F \neq \oslash \}$,
+$\delta'(S, a) = \{ q' \in Q \mid \exists q \in S q \xrightarrow{\epsilon^*a\epsilon^*} q' \}$
+and $q'_0 = \{ q_0 \}$.
 
 \begin{definition}[Union, Intersection, Complement, Concatenation, Star]
 
@@ -214,7 +218,8 @@ following conditions:
 
 \end{theorem}
 
-
+*Proof idea:* Construct a string longer than the states of a DFA. One
+ state must be visited twice.
 
 \begin{example}
 The language $\{ 0^m1^m \mid n \in \mathbb{N} \}$ is not regular.
@@ -231,7 +236,7 @@ q_0, F)$, where $Q$, $\Sigma$, $\Gamma$ and $F$ are all finite sets, and:
 \item $Q$ is the set of states,
 \item $\Sigma$ is the input alphabet,
 \item $\Gamma$ is the stack alphabet,
-\item $\delta : Q \times \Sigma_\epsilon \times \Gamma_\epsilon \longrightarrow \mathcal(P)(Q \times \Gamma_\epsilon$ is the transition function,
+\item $\delta : Q \times \Sigma_\epsilon \times \Gamma_\epsilon \longrightarrow \mathcal{P}(Q \times \Gamma_\epsilon)$ is the transition function,
 \item $q_0 \in Q$ is the initial state, and
 \item $F \subseteq Q$ is the set of accepting states.
 \end{enumerate}
@@ -322,8 +327,23 @@ A language is recognized by a PDA if and only if it is context-free.
 
 \end{theorem}
 
+*Proof idea:*
 
-Facts:
+- $CFG \Rightarrow PDA$: Put the start variable $S$ on stack, non-deterministically expand rules.
+- $PDA \Rightarrow CFG$:
+    1. Construct an equivalent P such that:
+        - P has a single accepting state
+        - It empties stack before accepting
+        - Each transition either pushes a symbol or pops one, but never both
+    2. Now construct the grammar as follows:
+        - $V = \{ A_{pq} \mid p, q \in Q \}$
+        - the start variable is $A_{q_0, q_{acc}}$
+        - $A_{pq} \to aA_{rs}b$ if $(r, t) \in \delta(p, a, \epsilon)$ and $(q, \epsilon) \in \delta(s, b, t)$
+        - $A_{pq} \to A_{pr}A_{rq}$ if $p, q, r \in Q$
+        - $A_{pp} \to \epsilon$ for each $p \in Q$
+
+
+Some Facts:
 
 1. The class of context-free languages is closed under _union_,
 _concatenation_, and _star_, but NOT under _intersection_ or
@@ -343,7 +363,7 @@ under _complementation_, but NOT closed under the following operations:
 Any CFL whose complement is not a CFL is not DCFL.
 
 
-\begin{definition}[Pumping Lemma for Context-Free Languages]
+\begin{theorem}[Pumping Lemma for Context-Free Languages]
 
 If $A$ is a context-free language, then there is a number $p$ (the
 pumping length) where, if $s$ is any sequence in $A$ of length at
@@ -358,7 +378,10 @@ satisfying the following conditions:
 
 \end{enumerate}
 
-\end{definition}
+\end{theorem}
+
+*Proof idea: * Construct a derivation tree large enough so that one path visits
+the same variable $T$ twice.
 
 
 \begin{example}
