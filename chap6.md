@@ -226,3 +226,110 @@ T \not \vdash_c const(T).
 $$
 
 \end{lemma}
+
+
+## The Core of the Proof
+
+\begin{lemma}
+Let $\phi$ be any closed $\Sigma_1^0$-formula, then we have
+$$
+Rob. + I\Sigma_1^0 \vdash_c \phi \longrightarrow \exists x_1 \phi_{proof_{Rob.}} (x_1, \ulcorner \phi \urcorner).
+$$
+\end{lemma}
+
+
+
+\begin{lemma}
+Let $\phi$ be any closed $\Sigma_1^0$-formula, then we have
+$$
+Rob. + I\Sigma_1^0 \vdash_c \phi  \quad  \Longleftrightarrow \quad Rob. + I\Sigma_1^0 \vdash_c \exists x_1 \phi_{proof_{Rob.}} (x_1, \ulcorner \phi \urcorner).
+$$
+\end{lemma}
+
+
+\begin{definition}[Final Extension]
+
+Let $\mathcal{M}$ and $\mathcal{N}$ be two models of $Rob.$, such that
+$\mathcal{M}$ is a substructure of $\mathcal{N}$.  $\mathcal{N}$ is a
+final extension of $\mathcal{M}$ if and only if for every $a \in
+\lvert \mathcal{M} \rvert$ and $b \in \lvert \mathcal{N} \rvert$ we
+have:
+
+\begin{enumerate}
+\item $\mathcal{N} \models b \le a \quad \Longrightarrow \quad b \in \lvert \mathcal{M} \rvert$
+\item $b \notin \lvert \mathcal{M} \rvert \quad \Longrightarrow \quad a \le b$.
+\end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+
+If $\mathcal{N}$ is a model of $Rob.$, then the substructure
+$\mathcal{M}$ whose domain is
+\[
+\lvert \mathcal{M} \rvert = \{ n^{\mathcal{N}} \mid n \in \mathcal{N} \}
+\]
+is isomorphic to the standard model $\mathcal{N}$.
+\end{lemma}
+
+
+
+\begin{lemma}
+Up to isomorphism, every model $\mathcal{N}$ of $Rob.$ is a final extension of
+the standard model $\mathbb{N}$.
+\end{lemma}
+
+
+\begin{proposition}
+Let $\phi$ be any closed $\Sigma_1^0$-formula:
+\[
+\mathbb{N} \models \phi \longleftrightarrow \exists x_1 \phi_{proof_{Rob.}}(x_1, \ulcorner \phi \urcorner).
+\]
+\end{proposition}
+
+
+\begin{corollary}
+If the Goldbach conjecture is neither provable nor disprovable, then it holds true in $\mathcal{N}$.
+\end{corollary}
+
+
+Note: The corollary above seems problematic to me. If Goldbach is
+true, then it by Lemma 185 it would be provable, a contradiction.
+
+
+\begin{lemma}
+Let $t_{[x_1, \dots, x_n]}$ be any $\mathcal{L}_A$-term (where $\mathcal{L}_A = \{ 0, S, +, \cdot \}$):
+\[
+Rob. + I\Sigma^0_1 \vdash_c
+\forall x_1 \dots x_{n + 1} (t_{[x_1, \dots, x_n]} = x_{n + 1} \longrightarrow \exists x_0 (x_0, \ulcorner t_{[x_1, \dots, x_n]} = x_{n + 1} \urcorner))
+\]
+\end{lemma}
+
+
+*Proof idea*: Induction on the height of the term $t_{[x_1, \dots, x_n]}$.
+
+
+\begin{lemma}
+The set of all formula $\phi$ that satisfy
+\[
+Rob. + I\Sigma^0_1 \vdash_c
+\forall x_1 \dots x_{n + 1} (\phi_{[x_1, \dots, x_n]} \longrightarrow \exists x_0 (x_0, \ulcorner \phi_{[x_1, \dots, x_n]} \urcorner))
+\]
+is closed under
+
+\begin{enumerate}
+\item conjunction
+\item disjunction
+\item existential quantification
+\item bounded universal quantification
+\end{enumerate}
+\end{lemma}
+
+
+
+\begin{theorem}[\godel's second incompleteness theorem]
+Let $T \supseteq Rob. + I\Sigma_1^0$ be any consistent recursive theory:
+\[
+T \not \vdash_c const(T)
+\].
+\end{theorem}
