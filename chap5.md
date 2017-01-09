@@ -3,7 +3,7 @@
 ## \godel \ Numbers
 
 \begin{definition}[\godel \ numbering of the $\mathcal{L}_A$-terms]
-The \godel numbering of the terms from the language
+The \godel \ numbering of the terms from the language
 $\mathcal{L}_A = \{ 0, S, +, \cdot \}$ is
 \begin{equation*}
 \begin{array}{lcl}
@@ -27,17 +27,17 @@ The set $\mathcal{T}$ of all codes of terms from $\mathcal{L}_A$ is primitive re
 
 \end{lemma}
 
-
+*Proof idea:* Immdiately follow the lemma below.
 
 \begin{lemma}
 
-For all primitive recursive functions $h : \mathcal{N}^{n + p + 1} \to \mathbb{N},
-g : \mathcal{N}^n \to \mathbb{N}, k_1, \dots, k_p : \mathcal{N} \to \mathcal{N}$,
+For all primitive recursive functions $h : \mathbb{N}^{n + p + 1} \to \mathbb{N},
+g : \mathbb{N}^n \to \mathbb{N}, k_1, \dots, k_p : \mathbb{N} \to \mathbb{N}$,
 such that every integer $y > 0$:
 \[
 \bigwedge_{0 < i \le p} k_i(y) < y
 \]
-the function $f : \mathcal{N}^{n + 1} \to \mathbb{N}$ defined by:
+the function $f : \mathbb{N}^{n + 1} \to \mathbb{N}$ defined by:
 \begin{enumerate}
 \item $f(\vec{x}, 0) = g(\vec{x})$
 \item $f(\vec{x}, y + 1) = h(f(\vec{x}, k_1(y)), \dots, f(\vec{x}, k_p(y)), \vec{x}, y, f(\vec{x}, y))$
@@ -46,7 +46,14 @@ the function $f : \mathcal{N}^{n + 1} \to \mathbb{N}$ defined by:
 is also primitive recursive.
 \end{lemma}
 
+*Proof idea:* Like proving recursivity of mutual primitive recursive functions,
+the idea is to construct a new function that's primitive recursive.
 
+Here the method is to define a primitive recursive function $\theta$
+that encodes all values of $f(\vec{x}, z)$ for $z < y$:
+$$
+\theta(\vec{x}, y) = c(f(\vec{x}, 0), \dots, f(\vec{x}, y))
+$$
 
 \begin{definition}[\godel \ numbering of the $\mathcal{L}_A$-formula]
 The \godel \ numbering of the $\mathcal{L}A$-formula is as follows:
@@ -133,7 +140,7 @@ The set of all codes of closed formula from $\mathcal{L}_A$ is primitive recursi
 
 
 \begin{lemma}
-The function $S^\mathcal{T}_{ub.}(n_u, n_t, n) : \mathcal{N}^3 \to \mathcal{N}$ defined below is primitive recursive:
+The function $S^\mathcal{T}_{ub.}(n_u, n_t, n) : \mathbb{N}^3 \to \mathbb{N}$ defined below is primitive recursive:
 \begin{equation*}
 s^\mathcal{T}_{ub.}(n_u, n_t, n) =
 \begin{cases}
@@ -145,7 +152,7 @@ s^\mathcal{T}_{ub.}(n_u, n_t, n) =
 
 
 \begin{lemma}
-The function $S^\mathcal{F}_{ub.}(n_u, n_t, n) : \mathcal{N}^3 \to \mathcal{N}$ defined below is primitive recursive:
+The function $S^\mathcal{F}_{ub.}(n_u, n_t, n) : \mathbb{N}^3 \to \mathbb{N}$ defined below is primitive recursive:
 \begin{equation*}
 s^\mathcal{F}_{ub.}(n_\phi, n_t, n) =
 \begin{cases}
@@ -157,7 +164,7 @@ s^\mathcal{F}_{ub.}(n_\phi, n_t, n) =
 
 
 \begin{definition}[coding and decoding sequences]
-We define $\ulcorner \urcorner : \mathcal{N}^\omega \to \mathcal{N}$ as follows:
+We define $\ulcorner \urcorner : \mathbb{N}^\omega \to \mathbb{N}$ as follows:
 \begin{equation*}
 \begin{cases}
 \ulcorner \epsilon \urcorner & = 0 \\
@@ -166,7 +173,7 @@ We define $\ulcorner \urcorner : \mathcal{N}^\omega \to \mathcal{N}$ as follows:
 \end{equation*}
 where $\prod(i)$ enumerates the prime numbers.
 
-We define $\llcorner \urcorner : \mathcal{N}^2 \to \mathcal{N}$ as follows:
+We define $\llcorner \urcorner : \mathbb{N}^2 \to \mathbb{N}$ as follows:
 \[
 {_\llcorner n \urcorner}^i = \mu x \le n \; \prod(i)^{i + 1} \text{ does not divide } n.
 \]
@@ -199,8 +206,8 @@ The set $\mathcal{C}_{\mathcal{P}_{\small fin.}(\mathcal{F})}$ of codes of finit
 \begin{lemma}
 
 There exists two primitive recursive functions $\mathcal{R}_{em.} :
-\mathcal{N}^2 \to \mathcal{N}$ and $\mathcal{A}_{dd.} : \mathcal{N}^2
-\to \mathcal{N}$ such chat:
+\mathbb{N}^2 \to \mathbb{N}$ and $\mathbb{A}_{dd.} : \mathbb{N}^2
+\to \mathbb{N}$ such chat:
 \begin{equation*}
 \mathcal{A}_{dd.}(n, m) =
 \begin{cases}
@@ -224,22 +231,22 @@ There exists two primitive recursive functions $\mathcal{R}_{em.} :
 \begin{lemma}
 The following set is primitive recursive:
 \[
-\mathcal{I}_{ns.} = \{ (\ulcorner \phi \urcorner, \ulcorner \Delta \urcorner) \in \mathcal{N}^2 \mid \ulcorner \phi \urcorner \in \mathcal{F}, \  \ulcorner \Delta \urcorner \in \mathcal{C}_{\mathcal{P}_{\small fin.}(\mathcal{F})} \text{ and } \phi \in \Delta \}
+\mathcal{I}_{ns.} = \{ (\ulcorner \phi \urcorner, \ulcorner \Delta \urcorner) \in \mathbb{N}^2 \mid \ulcorner \phi \urcorner \in \mathcal{F}, \  \ulcorner \Delta \urcorner \in \mathcal{C}_{\mathcal{P}_{\small fin.}(\mathcal{F})} \text{ and } \phi \in \Delta \}
 \]
 \end{lemma}
 
 
 \begin{lemma}
-The following set if primitive recursive:
+The following set is primitive recursive:
 \[
-\mathcal{E}_{qu.} = \{ (\ulcorner \Gamma \urcorner, \ulcorner \Delta \urcorner) \in \mathcal{N}^2 \mid \ulcorner \Gamma \urcorner \in \mathcal{C}_{\mathcal{P}_{\small fin.}(\mathcal{F})}, \  \ulcorner \Delta \urcorner \in \mathcal{C}_{\mathcal{P}_{\small fin.}(\mathcal{F})} \text{ and } \Gamma = \Delta \}
+\mathcal{E}_{qu.} = \{ (\ulcorner \Gamma \urcorner, \ulcorner \Delta \urcorner) \in \mathbb{N}^2 \mid \ulcorner \Gamma \urcorner \in \mathcal{C}_{\mathcal{P}_{\small fin.}(\mathcal{F})}, \  \ulcorner \Delta \urcorner \in \mathcal{C}_{\mathcal{P}_{\small fin.}(\mathcal{F})} \text{ and } \Gamma = \Delta \}
 \]
 \end{lemma}
 
 
 
 \begin{lemma}
-There exists a primitive recursive function $\mathcal{U}_{nion} : \mathcal{N}^2 \to \mathcal{N}$ such that:
+There exists a primitive recursive function $\mathcal{U}_{nion} : \mathbb{N}^2 \to \mathbb{N}$ such that:
 
 \begin{equation*}
 \mathcal{U}_{nion}(n, m) =
@@ -441,7 +448,7 @@ Each inference rule has some constraints on what constituites a valid
 proof. Those valid one-step proofs can be classified into three categories
 depending on the shape of the proof step:
 
-- $R^0$: the axiom
+- $R^0$: axioms
 - $R^1$: one sequent above, one sequent down
 - $R^2$: two sequents above, one sequent down
 
@@ -468,7 +475,7 @@ k = \alpha_4(n_1, n_2, n_3, n_4) \in \mathcal{P}_{roofs} \\
 
 
 \begin{notation}
-Given any proof $P$ we write $\ulcorner P \urcorner \mid$ for the integer that codes the proof.
+Given any proof $P$ we write $\ulcorner P \urcorner$  for the integer that codes the proof.
 \end{notation}
 
 \begin{lemma}
