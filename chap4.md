@@ -59,7 +59,7 @@ any $\mathcal{L}_A$-formula whose free variables are among $x_0, \dots, x_n$.
 $\phi(x_0, \dots, x_n)$ represents the function $f$ if for all $i_i,
 \dots, i_n \in \mathbb{N}$:
 \[
-\forall x_0 f(i_1, \dots, i_n) = x_0 \longleftrightarrow \texttt{Rob.} \vdash_c \phi(x_0, \dots, i_n).
+\forall x_0 f(i_1, \dots, i_n) = x_0 \Longleftrightarrow \texttt{Rob.} \vdash_c \phi(x_0, \dots, i_n).
 \]
 
 \end{definition}
@@ -77,7 +77,7 @@ $\mathcal{L}_A$-formula whose free variables are among $x_1, \dots,
 x_n$.  $\phi(x_1, \dots, x_n)$ represents the set $A$ if for all $i_1,
 \dots, i_n \in \mathbb{N}$ we have:
 \[
-(i_1, \dots, i_n) \in A \longleftrightarrow \texttt{Rob.} \vdash_c \phi(i_1, \dots, i_n).
+(i_1, \dots, i_n) \in A \Longleftrightarrow \texttt{Rob.} \vdash_c \phi(i_1, \dots, i_n).
 \]
 
 \end{definition}
@@ -159,6 +159,7 @@ f(i_1, \dots, i_n) = \mu k \; (k, i_1, \dots, i_n) \in A.
 \]
 \end{lemma}
 
+*Proof idea:* $f$ is represented by $\phi_A(x_0, x_1, \dots, x_n) \land \forall y < x_0 \neg \phi_A(y, x_1, \dots, x_n)$.
 
 \begin{theorem}[Chinese Remainder Theorem]
 Suppose $n_0, n_1, \dots, n_k$ are positive integers which are pairwise co-prime.
@@ -174,8 +175,11 @@ x & \equiv \quad a_k \quad mod \; n_k.
 \end{equation*}
 \end{theorem}
 
+*Proof Idea:* Let $a = \prod_{i \le k} n_i$, from Bezout $c_i \cdot
+ n_i + d_i \cdot \frac{a}{n_i} = 1$. Let $e_i = d_i \cdot
+ \frac{a}{n_i}$, then $x = \sum_{i \le k}a_i \cdot e_i$ is a solution.
 
-\begin{lemma}[Godel $\beta$-function]
+\begin{lemma}[\godel \ $\beta$-function]
 There exists some function $\beta$ which is both representable and primitive
 recursive such that for all $k \in \mathbb{N}$ and every sequence
 $n_0, \dots, n_k$ there exists $a, b \in \mathbb{N}$ such that
@@ -189,6 +193,13 @@ $n_0, \dots, n_k$ there exists $a, b \in \mathbb{N}$ such that
 \end{equation*}
 \end{lemma}
 
+*Proof idea:* $\beta(i, a, b)$ is the remainder of the division of $b$ by $a(i + 1) + 1$.
+Choose $a = m!$ where:
+
+(1) $m \ge k + 1$;
+(2) $m! \ge max(n_0, \dots, n_k)$.
+
+Use Chinese Remainder Theorem to choose $b$.
 
 \begin{lemma}
 
@@ -203,15 +214,15 @@ f(\vec{x}, y + 1) & = h(\vec{x}, y, f(\vec{x}, y))
 \end{equation*}
 \end{lemma}
 
-*Proof idea:* Godel $\beta$-function is used to code the sequence:
+*Proof idea:* \godel \ $\beta$-function is used to code the sequence:
 \begin{equation*}
-\begin{cases}
-f(\vec{x}, 0) & = g(\vec{x}) \\
-f(\vec{x}, 1) & = h(\vec{x}, 0, f(\vec{x}, 0)  \\
-f(\vec{x}, 2) & = h(\vec{x}, 1, f(\vec{x}, 1)) \\
-              & \vdots                       \\
-f(\vec{x}, y + 1) & = h(\vec{x}, y, f(\vec{x}, y)) \\
-\end{cases}
+\begin{array}{lcl}
+f(\vec{x}, 0) & = & g(\vec{x}) \\
+f(\vec{x}, 1) & = & h(\vec{x}, 0, f(\vec{x}, 0)  \\
+f(\vec{x}, 2) & = & h(\vec{x}, 1, f(\vec{x}, 1)) \\
+              & \vdots &                         \\
+f(\vec{x}, y + 1) & = & h(\vec{x}, y, f(\vec{x}, y)) \\
+\end{array}
 \end{equation*}
 
 The formula that represents the function is as follows:
