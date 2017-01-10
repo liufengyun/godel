@@ -260,17 +260,22 @@ together with *soundness theorem* means that:
 
 > There is a formal proof of s in T if and only if s is satisfied by every model of T.
 
-It establishes the correspondancy between semantics of a langauge and
-its proof system. \godel \ incompleteness theorem cares about whether
-all theorems of a theory can be proved.
+*Completeness theorem* establishes the correspondancy between
+semantics of a langauge and its proof system in terms of
+validity. \textit{\godel \ incompleteness theorem} cares about whether all
+theorems of a theory can be proved, no mattter syntactically or semantically.
 
 *Incompleteness* is also different from *undecidability* of a
-theory. A theory can be undecidable, but all theorems are
+theory. A theory can be undecidable, while all its theorems are
 provable. \godel \ proved that for any consistent recursive theory
 which is stronger than Robinson arithemtic, there are some theorems
 that escape any efforts of proof, either systematic or ad-hoc. That
 means even God can't prove them, as proving them will result in
 contradictions.
+
+As semantic consequence corresponds to syntactic proof, \textit{\godel \
+incompleteness theorem} implies it's impossible to prove some
+theorems neither in a syntactical way or semantic way.
 
 \begin{definition}[Final Extension]
 
