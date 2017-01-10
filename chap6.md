@@ -121,7 +121,7 @@ $\Pi_{n + 1}^0$ formula $\theta'$ such that:
 \item $Rob. \vdash_c \theta \longleftrightarrow \theta'$
 \end{itemize}
 
-where $\phi'$ and $theta'$ have alternating quantifiers of length 1.
+where $\phi'$ and $\theta'$ have alternating quantifiers of length 1.
 
 \end{proposition}
 
@@ -237,7 +237,7 @@ Rob. + I\Sigma_1^0 \vdash_c \phi \longrightarrow \exists x_1 \phi_{proof_{Rob.}}
 $$
 \end{lemma}
 
-
+*Proof idea:* Lemma 187 and 188.
 
 \begin{lemma}
 Let $\phi$ be any closed $\Sigma_1^0$-formula, then we have
@@ -246,6 +246,31 @@ Rob. + I\Sigma_1^0 \vdash_c \phi  \quad  \Longleftrightarrow \quad Rob. + I\Sigm
 $$
 \end{lemma}
 
+*Proof idea:*
+
+- $\Leftarrow$: trivial, from existence of proof we can construct an actual proof in the standard model $\mathbb{N}$ by resorting to *soundness theorem*.
+- $\Rightarrow$:
+    - prove $\mathbb{N} \models \exists x_1 \phi_{proof_{Rob.}} (x_1, \ulcorner \phi \urcorner)$ by induction on the shape of $\phi$.
+    - prove every model $\mathcal{M}$ of $Rob. + I\Sigma_1^0$ that $\mathcal{M} \models \exists x_1 \phi_{proof_{Rob.}} (x_1, \ulcorner \phi \urcorner)$
+        - every model $\mathcal{M}$ is a final extension of a structure isomorphic to $\mathbb{N}$.
+    - immediate by *completeness theorem*
+
+Note that here the word *complete* in *completeness theorem*, which,
+together with *soundness theorem* means that:
+
+> There is a formal proof of s in T if and only if s is satisfied by every model of T.
+
+It establishes the correspondancy between semantics of a langauge and
+its proof system. \godel \ incompleteness theorem cares about whether
+all theorems of a theory can be proved.
+
+*Incompleteness* is also different from *undecidability* of a
+theory. A theory can be undecidable, but all theorems are
+provable. \godel \ proved that for any consistent recursive theory
+which is stronger than Robinson arithemtic, there are some theorems
+that escape any efforts of proof, either systematic or ad-hoc. That
+means even God can't prove them, as proving them will result in
+contradictions.
 
 \begin{definition}[Final Extension]
 
@@ -289,12 +314,12 @@ Let $\phi$ be any closed $\Sigma_1^0$-formula:
 
 
 \begin{corollary}
-If the Goldbach conjecture is neither provable nor disprovable, then it holds true in $\mathcal{N}$.
+If the Goldbach conjecture is neither provable nor disprovable, then it holds true in $\mathbb{N}$.
 \end{corollary}
 
 
 Note: The corollary above seems problematic to me. If Goldbach is
-true, then it by Lemma 185 it would be provable, a contradiction.
+true, then by Lemma 185 it would be provable, a contradiction.
 
 
 \begin{lemma}

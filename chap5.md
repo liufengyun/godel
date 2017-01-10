@@ -522,6 +522,10 @@ $$
 \chi_B{n} = 1 \ominus (1 \ominus (\mu k \chi_A(k, n) = 1))
 $$
 
+**complete**: a theory is *complete* if it is both consistent and
+  satisfies for each formula $\phi$ either $T \vdash_c \phi$ or $T
+  \vdash_c \neg \phi$.
+
 \begin{corollary}
 Let $T$ be any recursive theory:
 \begin{center}
