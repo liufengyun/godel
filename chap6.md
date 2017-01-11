@@ -277,6 +277,20 @@ As semantic consequence corresponds to syntactic proof, \textit{\godel \
 incompleteness theorem} implies it's impossible to prove some
 theorems neither in a syntactical way or semantic way.
 
+An equivalent formulation of **completeness theorem** is that *a
+theory is consistent if and only if it has a model*. Proof of the
+equivalence is to study the new theory $T \cup \{ \phi \}$.
+
+**Compactness theorem** A theory $T$ is satisfiable (has a model) if and
+only if every finite subset of it has a model.
+
+**Löwenheim–Skolem theorem** If a countable first-order theory has an
+  infinite model, then for every infinite cardinal number $k$ it has a
+  model of size $k$. The result implies that first-order theories are
+  unable to control the cardinality of their infinite models, and that
+  no first-order theory with an infinite model can have a unique model
+  up to isomorphism.
+
 \begin{definition}[Final Extension]
 
 Let $\mathcal{M}$ and $\mathcal{N}$ be two models of $Rob.$, such that

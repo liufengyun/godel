@@ -86,10 +86,34 @@ x \ominus y =
 \begin{definition}[Primitive Recursive Sets]
 
 A set $A \subseteq \mathbb{N}^p$ is primitive recursive if its
-characteristic function is recursive.
+characteristic function is primitive recursive.
 
 \end{definition}
 
+Note that if the characteristic function is *primitive recursive*,
+then the set is *decidable*. A set is decidable doesn't mean its
+characteristic function is primitive recursive, e.g. the following
+set whose characteristic function depends on Ackermann's function:
+$$
+M = \{ n \mid A(n, n) \text{ divides } 3 \}
+$$
+
+In contrast, if a set is *recognizable*, then its characteristic function
+is *recursive*. However, if the characteristic function is *recursive*, it doesn't
+imply that the set is *recognizable*, as the characteristic function
+may be not defined at the point $x$ while $x \in A$.
+
+To summarize, we have the following:
+\begin{equation*}
+\begin{array}{lcl}
+X_A \text{ primitive recursive } &  \Rightarrow & A \text{ decidable (recursive) } \\
+X_A \text{ primitive recursive } & \nLeftarrow & A \text{ decidable (recursive) } \\
+X_A \text{ recursive } &  \nRightarrow & A \text{ recognizable (recursively enumerable) } \\
+X_A \text{ recursive } & \Leftarrow & A \text{ recognizable (recursively enumerable) }
+\end{array}
+\end{equation*}
+
+\vspace{5mm}
 
 \begin{example}
 Primitive recursive sets:
