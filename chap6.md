@@ -275,7 +275,9 @@ contradictions.
 
 As semantic consequence corresponds to syntactic proof, \textit{\godel \
 incompleteness theorem} implies it's impossible to prove some
-theorems neither in a syntactical way or semantic way.
+theorems neither in a syntactical way or semantic way. Note that a semantic
+proof has to show that any model that satisfies the axioms also satisfies
+the formula.
 
 An equivalent formulation of **completeness theorem** is that *a
 theory is consistent if and only if it has a model*. Proof of the
@@ -377,3 +379,10 @@ Let $T \supseteq Rob. + I\Sigma_1^0$ be any consistent recursive theory:
 T \not \vdash_c const(T)
 \].
 \end{theorem}
+
+
+**Relationship between first and second incompleteness theorem** The
+first incompleteness theorem says that there are formulas that cannot
+be proved or disproved (syntactically or semantically), the second
+incompleteness theorem says one of such formulas is the consistence of
+the theory itself.
