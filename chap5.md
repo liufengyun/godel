@@ -519,12 +519,18 @@ Given any theory $T$,
 
 *Intuition:* The characteristic function of the set of theorems is as follows:
 $$
-\chi_B{n} = 1 \ominus (1 \ominus (\mu k \chi_A(k, n) = 1))
+\chi_B(n) = 1 \ominus (1 \ominus (\mu k \chi_A(k, n) = 1))
 $$
+
+And _importantly_, $\chi_B(n) = 1$ when $n \in B$.
 
 **complete**: a theory is *complete* if it is both consistent and
   satisfies for each formula $\phi$ either $T \vdash_c \phi$ or $T
-  \vdash_c \neg \phi$.
+  \vdash_c \neg \phi$. Equivalently, if _completeness theorem_ holds
+  for the theory $T$:
+
+- for all models $\mathcal{M}$, $\mathcal{M} \models T \to \mathcal{M} \models \phi$
+- or for all models $\mathcal{M}$, $\mathcal{M} \models T \to \mathcal{M} \models \neg \phi$
 
 \begin{corollary}
 Let $T$ be any recursive theory:

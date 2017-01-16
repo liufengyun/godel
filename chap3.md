@@ -7,7 +7,7 @@
 \hfill
 
 \textbf{projection:} If $i$ is any integer such that $1 \le i \le p$ holds,
-the $i^th$ projection $\pi_i^p$ is the function defined by
+the $i^{th}$ projection $\pi_i^p$ is the function defined by
 \[
 \pi_i^p(x_1,\dots,x_p) = x_i
 \]

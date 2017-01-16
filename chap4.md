@@ -67,7 +67,7 @@ $\phi(x_0, \dots, x_n)$ represents the function $f$ if for all $i_i,
 Note: The variables $i_1, i_n$ on the left and right mean different things. On
 the left, they are integers. On the right they are formula in \texttt{Rob}
 that correspond to the integer. Strictly, a conversion function is in need on
-the right. The abuse of symbols is justified for simplicity of presentation.
+the right. The abuse of symbols is justified by simplicity of presentation.
 
 
 \begin{definition}

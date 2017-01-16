@@ -82,7 +82,7 @@ A nondeterministic finite automaton (NFA) is a 5-tuple $(Q, \Sigma,
 \begin{definition}[NFA accepts a Word]
 
 Let $\mathcal{N} = (Q, \Sigma, \delta, q_0, F)$ be an NFA and $w \in
-\Sigma^{<\omega}$. We say that $mathcal{N}$ accepts $w$ if and only if
+\Sigma^{<\omega}$. We say that $\mathcal{N}$ accepts $w$ if and only if
 
 \begin{itemize}
 \item either $w = \epsilon$ and $q_0 \in F$, or
@@ -167,7 +167,7 @@ $L(R)$ as follows:
 
 \item $L(a) = \{ a \}$
 \item $L(\epsilon) = \{ \epsilon \}$
-\item $\L(\oslash) = \oslash$
+\item $L(\oslash) = \oslash$
 \item $L(R_1 \cup R_2) = L(R_1) \cup L(R_2)$
 \item $L(R_1 \circ R_2) = L(R_1) \circ L(R_2)$
 \item $L(R_1^*) = L(R_1)^*$
