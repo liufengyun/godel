@@ -141,11 +141,9 @@ $\phi \in \Delta_0^0 \text{ and } t \text{ is a term } \longrightarrow \forall x
 
 Given any $n \in \mathbb{N}$ and any $\Sigma_1^0$-formula $\phi =
 \exists x_0 \dots x_n \psi$ where $\psi \in \Delta_0^0$, then there
-exists some $\Delta^0_0$-formula $\psi'$ such that:
-\[
-Rob. \vdash_c \exists x_0 \dots x_n \psi \longleftrightarrow \exists x \psi'.
-\]
+exists some $\Delta^0_0$-formula $\psi'$ such that: $Rob. \vdash_c \exists x_0 \dots x_n \psi \longleftrightarrow \exists x \psi'$.
 \end{proposition}
+
 $$
 diag(n) =
 \begin{cases}
