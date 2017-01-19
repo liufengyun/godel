@@ -1,0 +1,126 @@
+\documentclass[9pt]{article}  % default square logo
+
+\usepackage[margin=2mm]{geometry}
+\usepackage{setspace}
+\usepackage{mathptmx} % Times font
+\usepackage{mathrsfs} % mathrsfs font
+\usepackage{amsthm}   % theorems, definitions, lemmas
+\usepackage{amsfonts}
+\usepackage{amsmath}  % \text{}
+\usepackage[mathcal]{euscript}
+\usepackage{./bcprules}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{framed}       % frames
+\usepackage[hidelinks]{hyperref} % hide red boxes around links
+\usepackage{amssymb}      % empty set
+\usepackage{multicol}     % multi-column
+\usepackage{tabu}         % advanced table layout
+\usepackage{chngcntr}     % figure numbering per chapter
+\usepackage[hang,flushmargin]{footmisc}  % footnote indent
+\usepackage{parskip}      % no par indent
+\usepackage{upgreek}      % upright greek letters, in was bundle
+
+\renewcommand\familydefault\sfdefault
+\usepackage{mathastext}   % math mode font
+\renewcommand\familydefault\rmdefault
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+% figure numbering
+\counterwithin{figure}{section}
+
+% code listing
+\usepackage{listings}
+\usepackage[table]{xcolor}
+
+% packages for drawing
+\usepackage{tikz}
+\usetikzlibrary{graphs}     % create graphs
+\usetikzlibrary{arrows}
+\usetikzlibrary{trees}
+
+%% set code styles
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{shade}{rgb}{0.8,0.8,0.8}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+  % frame=tb,
+  language=scala,
+  aboveskip=3mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  xleftmargin=\parindent
+}
+
+% definitions, theorems
+\newtheoremstyle{theorem}% ⟨name⟩
+{6pt}%⟨Space above⟩
+{2pt}%⟨Space below⟩
+{}%⟨Body font⟩
+{}%⟨Indent amount⟩
+{\bfseries}% ⟨Theorem head font⟩
+{.}%⟨Punctuation after theorem head⟩
+{.5em}%⟨Space after theorem head⟩2
+{}%⟨Theorem head spec (can be left empty, meaning ‘normal’)⟩
+
+\theoremstyle{theorem}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{definition}{Definition}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{example}{Example}
+\newtheorem{notation}{Notation}
+\newtheorem{remarks}{Remarks}
+
+% layout
+% \setlength\parindent{0pt}     % no indent
+% \setlength{\parskip}{8pt}     % par spacing
+\onehalfspacing               % line spacing
+
+% pandoc
+
+\providecommand{\tightlist}{% for pandoc compatibility
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+}
+
+\newcommand\godel{G\"odel}
+
+%end the preamble and start the document
+\begin{document}
+
+%% \include{content/dedication}     % include a dedication.tex file
+
+
+%now include the files of latex for each of the chapters etc
+\include{cheat-content}
+
+%now enable appendix numbering format and include any appendices
+%% \appendix
+%% \include{content/appendix1}
+
+%next line adds the Bibliography to the contents page
+% \addcontentsline{toc}{section}{Bibliography}
+%uncomment next line to change bibliography name to references
+%\renewcommand{\bibname}{References}
+% \bibliography{refs}        %use a bibtex bibliography file refs.bib
+% \bibliographystyle{alpha}  %use the plain bibliography style
+% or: plain,unsrt,alpha,abbrv,acm,apalike,...
+
+\end{document}
