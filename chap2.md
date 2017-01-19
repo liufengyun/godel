@@ -6,7 +6,7 @@
 \begin{definition}[Deterministic Turing Machine]
 
 A deterministic Turing Machine is a 7-tuple $(Q, \Sigma, \Gamma,
-\delta, q_0, q_{acc.}, q_{rej.}))$ where $Q, \Sigma, \Gamma$ are
+\delta, q_0, q_{acc.}, q_{rej.})$ where $Q, \Sigma, \Gamma$ are
 all finite sets and
 
 \begin{enumerate}

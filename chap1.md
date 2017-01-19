@@ -45,7 +45,7 @@ accepts the word $w \in \Sigma^{<\omega}$ if and only if
 Given any DFA $\mathcal{A}$, $\mathcal{L(A)}$ denotes the language accepted by $\mathcal{A}$:
 
 \[
-\mathcal{L(A)} = \{ w \in \Sigma^{<\omega} : w \text{ is accepted by } \mathcal{A}  \}.
+\mathcal{L(A)} = \{ w \in \Sigma^{<\omega} \mid w \text{ is accepted by } \mathcal{A}  \}.
 \]
 
 \end{definition}
@@ -131,7 +131,7 @@ concatenation and star as follows:
 
 \begin{theorem}[Closure under Regular Operations]
 
-Regular languages are closed under union, intersection, complement, concatenation and star.
+Regular languages are closed under \textit{union}, \textit{intersection}, \textit{complement}, \textit{concatenation} and \textit{star}.
 
 \end{theorem}
 
@@ -372,7 +372,7 @@ satisfying the following conditions:
 
 \begin{enumerate}
 
-\item $\forall i \ge 0$, $vw^ixy^iz \in A$
+\item $\forall i \ge 0$, $vw^ixy^iz \in A$,
 \item $\lvert wy \rvert > 0$,
 \item $\lvert wxy \rvert \le p$.
 

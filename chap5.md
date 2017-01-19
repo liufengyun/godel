@@ -377,7 +377,7 @@ Logical Rules \\
 
 \begin{multicols}{2}
 
-\infrule[$\exists_r$]
+\infrule[$\exists_l$]
 { \Gamma, \phi_{[y/x]} \vdash \Delta }
 { \Gamma, \exists x \phi \vdash \Delta }
 

@@ -281,7 +281,7 @@ the formula.
 
 An equivalent formulation of **completeness theorem** is that *a
 theory is consistent if and only if it has a model*. Proof of the
-equivalence is to study the new theory $T \cup \{ \phi \}$.
+equivalence is to study the new theory $T \cup \{ \neg \phi \}$.
 
 **Compactness theorem** A theory $T$ is satisfiable (has a model) if and
 only if every finite subset of it has a model.
